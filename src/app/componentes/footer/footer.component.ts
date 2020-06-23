@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  mensaje:string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.usuarioLogeado()
   }
 
+  usuarioLogeado() {
+
+    let usuario = JSON.parse(localStorage.getItem("usuarioLogeado"));
+
+    if(usuario == null) {
+      this.mensaje = "Bienvenido usuario."
+    }
+    else {
+      this.mensaje = "Usuario en linea: " + usuario.mail;
+    }
+    
+  }
 }

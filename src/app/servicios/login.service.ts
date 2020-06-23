@@ -4,6 +4,7 @@ import { database } from 'firebase'; // ACA
 import * as firebase from 'firebase/app';
 import { Usuario } from '../clases/usuario';
 
+import { Observable } from 'rxjs';
 
 // import { Medico } from '../clases/medico';
 // import * as firebase from 'firebase';
@@ -13,29 +14,34 @@ import { Usuario } from '../clases/usuario';
 })
 export class LoginService {
 
-  constructor(public afAuth: AngularFireAuth){}
+  private usuario:Observable<firebase.User>;
+
+  constructor(public afAuth: AngularFireAuth){
+    this.usuario = this.afAuth.authState;
+  }
 
   doRegister(value){
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
+      firebase.auth().createUserWithEmailAndPassword(value.mail, value.clave)
       .then(res => {
         resolve(res);
       }, err => reject(err))
     })
   }
 
-  public crear(usuario: Usuario) {
-    if (usuario.tipo === "MEDICO") {
-      database().ref('medicos')
-        .push(usuario)
-        .then(() => console.info("Alta exitosa"))
-        .catch(() => console.info("No se pudo realizar alta"));
-    }
-    else {
-      database().ref('usuarios')
-        .push(usuario)
-        .then(() => console.info("Alta exitosa"))
-        .catch(() => console.info("No se pudo realizar alta"));
-    }
+  loginEmailUser(email:string, pass:string) {
+    return new Promise((resolve, reject)=>{
+      firebase.auth().signInWithEmailAndPassword(email,pass)
+      .then(userData => {
+        resolve(userData);
+      },
+      err => reject(err));
+    })
+  }
+
+  logoutUser() {
+    console.log("Sesion terminada");
+    localStorage.removeItem("usuarioLogeado");
+    return firebase.auth().signOut();
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-// import { LoginService } from '../../servicios/login.service';
+import { LoginService } from '../../servicios/login.service';
 
 @Component({
   selector: 'app-cabecera',
@@ -11,7 +11,7 @@ export class CabeceraComponent implements OnInit {
 
   constructor(
     private router: Router,
-    // public loginService: LoginService
+    public loginService: LoginService
     ) { }
 
   ngOnInit() {
@@ -32,7 +32,8 @@ export class CabeceraComponent implements OnInit {
           this.router.navigate(['/verTurnos']);
         break;
       case 'Salir':
-          // this.loginService.logOut();
+          this.loginService.logoutUser();
+          this.router.navigate(['']);
         break;
     }
   }

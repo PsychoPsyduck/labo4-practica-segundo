@@ -3,7 +3,37 @@
 <mat-card>
   <mat-card-title>Registro</mat-card-title>
   <div mat-card-avatar class="example-header-image"></div>
-  <form action="">
+
+  <form [formGroup]="registerForm">
+    <div class="form-group">
+      <mat-form-field class="full-width-input">
+        <mat-label>Mail</mat-label>
+        <input matInput type="text" formControlName="mail">
+      </mat-form-field>
+    </div>
+    
+    <div class="form-group">
+      <mat-form-field class="full-width-input">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="clave">
+        <mat-label class="error">{{errorMessage}}</mat-label>
+        <mat-label class="success">{{successMessage}}</mat-label>
+      </mat-form-field>
+    </div>
+    <!-- <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" formControlName="password" required>
+      <label class="error">{{errorMessage}}</label>
+      <label class="success">{{successMessage}}</label>
+    </div> -->
+    <button class="example-button-row" mat-raised-button color="warn" (click)="Volver()">Volver</button>
+    <button class="example-button-row" mat-raised-button color="primary" (click)="tryRegister(registerForm.value)">Entrar</button>
+    <!-- <button [hidden]="ocultarVerificar"  mat-raised-button color="primary" *ngIf="logeando"  (click)="tryRegister(registerForm.value)">Entrar</button>
+    <button [hidden]="!ocultarVerificar" mat-raised-button color="primary" *ngIf="logeando"  (click)="Entrar()"><i class="fa fa-spinner fa-spin"></i> Ingresando</button> -->
+  
+    <!-- <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button> -->
+ </form>
+  <!-- <form action="">
     <mat-form-field class="full-width-input">
       <mat-label>Nombre</mat-label>
       <input matInput type="text" [(ngModel)]="nombre" name="uname">
@@ -38,7 +68,7 @@
     <br>
     <button class="example-button-row" mat-raised-button color="warn" (click)="Volver()">Volver</button>
     <button class="example-button-row" mat-raised-button color="primary" (click)="Registrar()">Entrar</button>
-  </form>
+  </form> -->
 </mat-card>
   
 <app-footer></app-footer>

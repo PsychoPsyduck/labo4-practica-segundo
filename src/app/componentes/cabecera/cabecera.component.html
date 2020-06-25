@@ -1,28 +1,25 @@
 <mat-toolbar color="primary">
     <section>
       <button mat-button class="logo" (click)="Router('Home')">
-        <img src="/assets/imagenes/logo.png" alt="">
-        <span>Clinica</span>
+        <span>Academia</span>
       </button>
-      <button mat-button class="logo" (click)="Router('registro')">
-        <img src="/assets/imagenes/logo.png" alt="">
+      <!-- <button mat-button class="logo" (click)="Router('registro')">
         <span>Registro</span>
-      </button>
+      </button> -->
       <button [hidden]="!esAdmin" mat-button class="logo" (click)="Router('materia')">
-        <img src="/assets/imagenes/logo.png" alt="">
         <span>Materia</span>
       </button>
       <button [hidden]="!esAdmin" mat-button class="logo" (click)="Router('usuario')">
-        <img src="/assets/imagenes/logo.png" alt="">
         <span>Usuario</span>
       </button>
+      <button [hidden]="!esAdmin" mat-button class="logo" (click)="Router('alumno')">
+        <span>Alumnos</span>
+      </button>
       <button [hidden]="!esAlumno" mat-button class="logo" (click)="Router('materiaAlum')">
-        <img src="/assets/imagenes/logo.png" alt="">
         <span>Materias</span>
       </button>
-      <button mat-button class="logo" (click)="Router('listadoMedico')">
-        <img src="/assets/imagenes/logo.png" alt="">
-        <span>Listado</span>
+      <button [hidden]="!esProfesor" mat-button class="logo" (click)="Router('materiaProf')">
+        <span>Materias</span>
       </button>
   
       <div class="MenuButton">

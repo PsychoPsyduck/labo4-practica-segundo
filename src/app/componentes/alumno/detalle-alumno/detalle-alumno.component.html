@@ -1,0 +1,13 @@
+
+  <mat-card>
+    <mat-card-title>Detalle</mat-card-title>
+    <div  *ngIf="detalleAlumno" class="card" style="width: 18rem;">
+    <!-- <img [src]="this.detallePelicula.foto" class="card-img-top" alt="..."> -->
+    <div class="card-body">
+      <h5 class="card-title">Alumno: {{detalleAlumno.mail}}</h5>
+      <p class="card-text">Tipo: {{detalleAlumno.tipo}}</p>
+      <button class="btn btn-danger btn-block"  (click)="borrarAlumno()">Borrar Alumno</button>
+      
+    </div>
+  </div>
+</mat-card>

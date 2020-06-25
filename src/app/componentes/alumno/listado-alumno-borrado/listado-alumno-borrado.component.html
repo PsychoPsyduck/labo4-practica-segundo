@@ -1,0 +1,22 @@
+<mat-card>
+    <table class="table">
+      <thead class="table table-condensed">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Fecha</th>
+          <!-- <th scope="col">Foto</th> -->
+          <th scope="col">Detalle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let alumno of borrados " >
+          <th>{{alumno.mail}}</th>
+          <td>{{alumno.tipo}}</td>
+          <td>{{alumno.date}}</td>
+          <!-- <td> <img [src]="pelicula.foto" width="80px" > </td> -->
+            <td><button (click)="verDetalles(alumno)" >Ver</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>

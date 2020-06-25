@@ -1,0 +1,23 @@
+<app-cabecera></app-cabecera>
+
+<mat-card>
+    <mat-card-title>Alumnos</mat-card-title>
+    <div class="row">
+        <div class="col-md-9">
+            <app-listado-alumno (alumnoSeleccionado)="enviarAlumnoSeleccionado($event)" [alumnos]="this.alumnos"></app-listado-alumno>
+        </div>
+        <div class="col-md-3">
+            <app-detalle-alumno (eliminarAlumno)="eliminar($event)" [detalleAlumno]="this.alumnoSeleccionado"></app-detalle-alumno>
+        </div>
+    </div>
+</mat-card>
+<mat-card>
+    <mat-card-title>Alumnos Borrados</mat-card-title>
+    <div class="row">
+        <div class="col-md-9">
+            <app-listado-alumno-borrado (alumnoSeleccionado)="enviarAlumnoSeleccionado($event)" [borrados]="this.borrados"></app-listado-alumno-borrado>
+        </div>
+    </div>
+</mat-card>
+
+<app-footer></app-footer>

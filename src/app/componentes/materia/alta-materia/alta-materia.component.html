@@ -30,6 +30,11 @@
           <input matInput type="text" formControlName="profesor">
         </mat-form-field>
       </div>
+
+      <div class="imgFile">
+        <mat-label>Imagen</mat-label>
+        <input type="file" (change)="onFileSelected($event)">
+      </div>
   
       <div class="form-group">
         <mat-label class="error">{{errorMessage}}</mat-label>

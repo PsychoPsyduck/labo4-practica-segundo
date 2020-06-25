@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { database } from 'firebase'; // ACA
 import { Materia } from '../clases/materia';
+import { UploadService } from './upload.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class MateriaService {
   public usuario;
   public materiasUsuario = []
 
-  constructor() {
+  constructor(public uploadService: UploadService) {
     this.traerMaterias();
     this.materias = JSON.parse(localStorage.getItem("materias"));
 
@@ -20,16 +21,26 @@ export class MateriaService {
     this.materiasUsuario = JSON.parse(localStorage.getItem("materiasUsuario"));
   }
 
-  public crear(materia) {
+  public crear(materia, img) {
     var id = materia.nombre + "-" + materia.cuatrimestre;
     id = id.split('.').join("");
     
       return new Promise<any>((resolve, reject) => {
-        database().ref('materias/' + id)
+        database().ref('materias/' + id).push().then(res => {
 
+          
+        })
+
+        // console.log("Bien");
+        
         database().ref('materias/' +id)
           .update(materia)
           .then(res => {
+            // .then(function (docRef) {
+              // this.uploadImg(materia, img);
+              materia = this.uploadImg(materia, img);
+              // console.log("Bien");
+            // });
             resolve(res);
           }, err => reject(err))
 
@@ -122,6 +133,30 @@ export class MateriaService {
         }, err => reject(err))
 
     })
+  }
+
+  public uploadImg( materia: Materia, imagen){
+    this.uploadService.subirArchivo(materia.nombre+materia.cuatrimestre+"_img1",imagen,{nombre:materia.nombre,cuatrimestre:materia.cuatrimestre}).then((img)=>{
+       img.ref.getDownloadURL().then(data=>{
+        materia.foto=data;
+        console.log(data);
+
+
+        var id = materia.nombre + "-" + materia.cuatrimestre;
+        id = id.split('.').join("");
+
+        database().ref('materias/' +id)
+          .update(materia)
+          .then(res => {
+            // .then(function (docRef) {
+              // this.uploadImg(materia, img);
+              // materia = this.uploadImg(materia, img);
+              console.log("llegar llegue");
+            // });
+            // resolve(res);
+          })//, err => reject(err))
+       });  
+    });
   }
 }
 

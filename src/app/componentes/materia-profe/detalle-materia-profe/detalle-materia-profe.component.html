@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-title>Detalle</mat-card-title>
+    <div mat-card-avatar class="example-header-image"></div>
+      <div  *ngIf="detalleMateria" class="card" style="width: 18rem;">
+        <img [src]="this.detalleMateria.foto" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-title">Nombre: {{detalleMateria.nombre}}</p>
+          <p class="card-text">Cuatrimestre: {{detalleMateria.cuatrimestre}}</p>
+          <p class="card-text">Cupos: {{detalleMateria.cupos}}</p> <!--</p> <p >appColorCupo-->
+          <p class="card-text">Inscriptos </p> <!-- {{detalleMateria.inscriptos}} -->
+
+          <!-- <button class="btn btn-danger btn-block"  (click)="borrarPelicula()">Borrar Pelicula</button> -->
+          
+        </div>
+      </div>
+  </mat-card>

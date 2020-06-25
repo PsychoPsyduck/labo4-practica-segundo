@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-title>Listado</mat-card-title>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cuatrimestre</th>
+            <th>Cupo</th>
+            <th>Detalle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let materia of materias"  >
+            <td>{{materia.nombre}}</td>
+            <td>{{materia.cuatrimestre}} </td>
+            <td appColorCupo>{{materia.cupos}} </td> 
+            <td><button (click)="verDetalles(materia)">Ver</button></td>
+        </tr>
+        
+        </tbody>
+    </table>
+</mat-card>
+    

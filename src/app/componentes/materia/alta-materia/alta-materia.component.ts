@@ -20,6 +20,7 @@ export class AltaMateriaComponent implements OnInit {
   profesor = '';
   errorMessage = '';
   successMessage = '';
+  img = null;
 
   constructor(public materiaService: MateriaService, private formBuilder:FormBuilder) { }
 
@@ -40,9 +41,9 @@ export class AltaMateriaComponent implements OnInit {
     console.log("profesor: " + value.profesor);
     let inscripto = new Array;
 
-    this.materia = new Materia(value.nombre, value.cuatrimestre, value.cupos, value.profesor, inscripto)
+    this.materia = new Materia(value.nombre, value.cuatrimestre, value.cupos, value.profesor, inscripto, "")
 
-    this.materiaService.crear(this.materia)
+    this.materiaService.crear(this.materia, this.img)
     .then(res => {
       console.log(res);
       this.errorMessage = "";
@@ -54,5 +55,9 @@ export class AltaMateriaComponent implements OnInit {
       this.errorMessage = err.message;
       this.successMessage = "";
     })
+  }
+
+  onFileSelected(event) {
+    this.img = event.target.files[0];
   }
 }

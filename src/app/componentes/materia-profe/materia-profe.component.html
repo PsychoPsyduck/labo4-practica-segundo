@@ -1,0 +1,15 @@
+<app-cabecera></app-cabecera>
+
+<mat-card>
+    <mat-card-title>Materias</mat-card-title>
+    <div class="row">
+        <div class="col-md-9">
+            <app-listado-materia-profe (materiaSeleccionada)="enviarMateriaSeleccionada($event)" [materias]="this.materias"></app-listado-materia-profe>
+        </div>
+        <div class="col-md-3">
+            <app-detalle-materia-profe [detalleMateria]="this.materiaSeleccionada"></app-detalle-materia-profe>
+        </div>
+    </div>
+</mat-card>
+
+<app-footer></app-footer>

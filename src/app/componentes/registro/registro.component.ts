@@ -10,6 +10,10 @@ import { UsuarioService } from '../../servicios/usuario.service'
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Usuario } from 'src/app/clases/usuario';
 
+interface Tipos {
+  value: string;
+}
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -36,6 +40,14 @@ export class RegistroComponent implements OnInit {
   errorMessage = '';
   successMessage = '';
 
+  selectedValue = "";
+
+  tipos: Tipos[] = [
+    {value: 'Alumno'},
+    {value: 'Profesor'},
+    {value: 'Admin'}
+  ];
+
   // usuario: Usuario = new Usuario(this.nombre, this.apellido, 40, this.mail, this.clave, '');
 
   constructor(
@@ -50,7 +62,7 @@ export class RegistroComponent implements OnInit {
     mail: new FormControl('', [ Validators.email,Validators.required]),
     clave: new FormControl('', [Validators.minLength(6), Validators.required]),
     clave2: new FormControl('', [Validators.minLength(6), Validators.required]),
-    // apellido: new FormControl('', [ Validators.minLength(3), Validators.required]),
+    tipo: new FormControl('', [ Validators.minLength(3), Validators.required]),
   });
 
   ngOnInit() {
@@ -68,10 +80,10 @@ export class RegistroComponent implements OnInit {
   tryRegister(value){
     console.log("mail: " + value.mail);
     console.log("clave: " + value.clave);
-    // console.log("tipo: " + value.tipo);
+    console.log("tipo: " + value.tipo);
 
-    if(value.clave == value.clave2) {
-      this.usuario = new Usuario(value.mail, value.clave, "Alumno")
+    if(value.clave == value.clave2 ) {
+      this.usuario = new Usuario(value.mail, value.clave, value.tipo)
 
       this.loginService.doRegister(this.usuario)
       .then(res => {
@@ -90,8 +102,11 @@ export class RegistroComponent implements OnInit {
         this.errorMessage = err.message;
         this.successMessage = "";
       })
-    } else {
+    } else if (value.clave != value.clave2){
       this.errorMessage = "Las claves no coinciden"
+    } else if (this.selectedValue == ""){
+      this.errorMessage = "Seleccione un tipo"
+      console.log(this.selectedValue)
     }
     
   }

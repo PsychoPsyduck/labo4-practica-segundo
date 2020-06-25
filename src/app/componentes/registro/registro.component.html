@@ -11,6 +11,17 @@
         <input matInput type="text" formControlName="mail">
       </mat-form-field>
     </div>
+
+    <div class="form-group">
+      <mat-form-field class="full-width-input">
+        <mat-label>Tipo</mat-label>
+        <mat-select [(ngModel)]="selectedValue" formControlName="tipo">
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo.value">
+                {{tipo.value}}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
     
     <div class="form-group">
       <mat-form-field class="full-width-input">

@@ -39,6 +39,13 @@ import { AltaMateriaAlumComponent } from './componentes/materia-alum/alta-materi
 import { ListadoMateriaAlumComponent } from './componentes/materia-alum/listado-materia-alum/listado-materia-alum.component';
 import { NotaPipe } from './pipes/nota.pipe';
 import { ColorCupoDirective } from './directiva/color-cupo.directive';
+import { MateriaProfeComponent } from './componentes/materia-profe/materia-profe.component';
+import { ListadoMateriaProfeComponent } from './componentes/materia-profe/listado-materia-profe/listado-materia-profe.component';
+import { DetalleMateriaProfeComponent } from './componentes/materia-profe/detalle-materia-profe/detalle-materia-profe.component';
+import { AlumnoComponent } from './componentes/alumno/alumno.component';
+import { ListadoAlumnoComponent } from './componentes/alumno/listado-alumno/listado-alumno.component';
+import { DetalleAlumnoComponent } from './componentes/alumno/detalle-alumno/detalle-alumno.component';
+import { ListadoAlumnoBorradoComponent } from './componentes/alumno/listado-alumno-borrado/listado-alumno-borrado.component';
 
 
 @NgModule({
@@ -59,7 +66,14 @@ import { ColorCupoDirective } from './directiva/color-cupo.directive';
     AltaMateriaAlumComponent,
     ListadoMateriaAlumComponent,
     NotaPipe,
-    ColorCupoDirective
+    ColorCupoDirective,
+    MateriaProfeComponent,
+    ListadoMateriaProfeComponent,
+    DetalleMateriaProfeComponent,
+    AlumnoComponent,
+    ListadoAlumnoComponent,
+    DetalleAlumnoComponent,
+    ListadoAlumnoBorradoComponent
   ],
   imports: [
     BrowserModule,

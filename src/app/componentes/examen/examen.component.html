@@ -1,0 +1,15 @@
+<app-cabecera></app-cabecera>
+
+<mat-card>
+    <mat-card-title>Examen</mat-card-title>
+    <div class="row">
+        <div class="col-md-9">
+            <app-lista-examen [examenes]="this.examenes"></app-lista-examen>
+        </div>
+        <div class="col-md-3">
+            <app-alta-examen (nuevaAlta)="altaNueva($event)"></app-alta-examen>
+        </div>
+    </div>
+</mat-card>
+
+<app-footer></app-footer>

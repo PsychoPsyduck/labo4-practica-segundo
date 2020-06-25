@@ -1,0 +1,29 @@
+<mat-card>
+    <mat-card-title>Registro</mat-card-title>
+    <div mat-card-avatar class="example-header-image"></div>
+  
+    <form [formGroup]="registerForm">
+      <div class="form-group">
+        <mat-form-field class="full-width-input">
+          <mat-label>Alumno</mat-label>
+          <input matInput type="text" formControlName="alumno">
+        </mat-form-field>
+      </div>
+      
+      <div class="form-group">
+        <mat-form-field class="full-width-input">
+          <mat-label>Nota</mat-label>
+          <input matInput type="text" formControlName="nota">
+        </mat-form-field>
+      </div>
+  
+      <div class="form-group">
+        <mat-label class="error">{{errorMessage}}</mat-label>
+        <mat-label class="success">{{successMessage}}</mat-label>
+      </div>
+      
+      <!-- <button class="example-button-row" mat-raised-button color="warn" (click)="Volver()">Volver</button> -->
+      <button class="example-button-row" mat-raised-button color="primary" (click)="tryRegister(registerForm.value)">Registrar</button>
+      
+    </form>
+  </mat-card>

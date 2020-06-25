@@ -37,7 +37,7 @@ export class AltaMateriaAlumComponent implements OnInit {
 
   tryRegister(value){
     let auxs = new Array();
-    let materia = new Materia("", "", 0, "", auxs, "")
+    let materia = new Materia("", "", 0, "", auxs, "", 2020)
 
     this.listaMaterias.forEach(element => {
       if(element.nombre == value) {

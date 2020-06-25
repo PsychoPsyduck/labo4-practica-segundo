@@ -1,0 +1,14 @@
+
+
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+}
+button {
+    margin: 1em;
+}
+
+div.imgFile input{
+    max-width: 90%;
+}

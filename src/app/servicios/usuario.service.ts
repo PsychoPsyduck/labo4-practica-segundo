@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { database } from 'firebase'; // ACA
 import { Usuario } from '../clases/usuario';
+import { UploadService } from './upload.service';
 
 interface UsuarioElim {
   mail: string
@@ -20,13 +21,13 @@ export class UsuarioService {
   public borrados = []
   usuarioElim: UsuarioElim;
 
-  constructor() {
+  constructor(public uploadService: UploadService) {
     this.usuarios = this.traerUsuarios();
     this.alumnos = this.traerAlumnos();
     this.borrados = this.traerBorrados()
   }
 
-  public crear(usuario) {
+  public crear(usuario, img) {
     var id = usuario.mail;
     id = id.split('.').join("");
 
@@ -34,8 +35,34 @@ export class UsuarioService {
     
     database().ref('usuarios/' +id)
       .update(usuario)
-      .then(() => console.info("Alta exitosa"))
+      .then(() => {
+        usuario = this.uploadImg(usuario, img);
+        console.info("Alta exitosa")
+      })
       .catch(() => console.info("No se pudo realizar alta"));
+  }
+  public uploadImg( usuario: Usuario, imagen){
+    this.uploadService.subirArchivo(usuario.mail+"_img1",imagen,{nombre:usuario.mail}).then((img)=>{
+       img.ref.getDownloadURL().then(data=>{
+        usuario.foto=data;
+        console.log(data);
+
+
+        var id = usuario.mail;
+        id = id.split('.').join("");
+
+        database().ref('usuarios/' +id)
+          .update(usuario)
+          .then(res => {
+            // .then(function (docRef) {
+              // this.uploadImg(materia, img);
+              // materia = this.uploadImg(materia, img);
+              console.log("llegar llegue");
+            // });
+            // resolve(res);
+          })//, err => reject(err))
+       });  
+    });
   }
 
   public getUser(mail: string) {

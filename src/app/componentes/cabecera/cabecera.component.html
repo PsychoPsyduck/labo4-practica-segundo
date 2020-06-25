@@ -3,9 +3,9 @@
       <button mat-button class="logo" (click)="Router('Home')">
         <span>Academia</span>
       </button>
-      <!-- <button mat-button class="logo" (click)="Router('registro')">
-        <span>Registro</span>
-      </button> -->
+      <button [hidden]="!esAdmin" mat-button class="logo" (click)="Router('registroAdm')">
+        <span>Registro Adm</span>
+      </button>
       <button [hidden]="!esAdmin" mat-button class="logo" (click)="Router('materia')">
         <span>Materia</span>
       </button>
@@ -20,6 +20,12 @@
       </button>
       <button [hidden]="!esProfesor" mat-button class="logo" (click)="Router('materiaProf')">
         <span>Materias</span>
+      </button>
+      <button [hidden]="!esProfesor" mat-button class="logo" (click)="Router('examen')">
+        <span>Examen</span>
+      </button>
+      <button [hidden]="!esProfesor" mat-button class="logo" (click)="Router('actas')">
+        <span>Actas</span>
       </button>
   
       <div class="MenuButton">

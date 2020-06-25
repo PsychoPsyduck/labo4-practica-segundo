@@ -46,6 +46,14 @@ import { AlumnoComponent } from './componentes/alumno/alumno.component';
 import { ListadoAlumnoComponent } from './componentes/alumno/listado-alumno/listado-alumno.component';
 import { DetalleAlumnoComponent } from './componentes/alumno/detalle-alumno/detalle-alumno.component';
 import { ListadoAlumnoBorradoComponent } from './componentes/alumno/listado-alumno-borrado/listado-alumno-borrado.component';
+import { UsuarioLogDirective } from './directiva/usuario-log.directive';
+import { ExamenComponent } from './componentes/examen/examen.component';
+import { ListaExamenComponent } from './componentes/examen/lista-examen/lista-examen.component';
+import { AltaExamenComponent } from './componentes/examen/alta-examen/alta-examen.component';
+import { ActasDeExamenComponent } from './componentes/actas-de-examen/actas-de-examen.component';
+import { ListadoDeAsignaturasComponent } from './componentes/actas-de-examen/listado-de-asignaturas/listado-de-asignaturas.component';
+import { ListadoDeAprobacionDirectaComponent } from './componentes/actas-de-examen/listado-de-aprobacion-directa/listado-de-aprobacion-directa.component';
+import { ListadoNoDirectaComponent } from './componentes/actas-de-examen/listado-no-directa/listado-no-directa.component';
 
 
 @NgModule({
@@ -73,7 +81,15 @@ import { ListadoAlumnoBorradoComponent } from './componentes/alumno/listado-alum
     AlumnoComponent,
     ListadoAlumnoComponent,
     DetalleAlumnoComponent,
-    ListadoAlumnoBorradoComponent
+    ListadoAlumnoBorradoComponent,
+    UsuarioLogDirective,
+    ExamenComponent,
+    ListaExamenComponent,
+    AltaExamenComponent,
+    ActasDeExamenComponent,
+    ListadoDeAsignaturasComponent,
+    ListadoDeAprobacionDirectaComponent,
+    ListadoNoDirectaComponent
   ],
   imports: [
     BrowserModule,

@@ -12,19 +12,19 @@ export class FooterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.usuarioLogeado()
+    // this.usuarioLogeado()
   }
 
-  usuarioLogeado() {
+  // usuarioLogeado() {
 
-    let usuario = JSON.parse(localStorage.getItem("usuarioLogeado"));
+  //   let usuario = JSON.parse(localStorage.getItem("usuarioLogeado"));
 
-    if(usuario == null) {
-      this.mensaje = "Bienvenido usuario."
-    }
-    else {
-      this.mensaje = "Usuario en linea: " + usuario.mail;
-    }
+  //   if(usuario == null) {
+  //     this.mensaje = "Bienvenido usuario."
+  //   }
+  //   else {
+  //     this.mensaje = "Usuario en linea: " + usuario.mail;
+  //   }
     
-  }
+  // }
 }

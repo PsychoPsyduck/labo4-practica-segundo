@@ -35,8 +35,7 @@ export class RegistroComponent implements OnInit {
   repitaClave= '';
   usuario;
   terminosCondiciones: boolean;
-  img1 = null;
-  img2;
+  img = null;
   errorMessage = '';
   successMessage = '';
 
@@ -44,8 +43,7 @@ export class RegistroComponent implements OnInit {
 
   tipos: Tipos[] = [
     {value: 'Alumno'},
-    {value: 'Profesor'},
-    {value: 'Admin'}
+    {value: 'Profesor'}
   ];
 
   // usuario: Usuario = new Usuario(this.nombre, this.apellido, 40, this.mail, this.clave, '');
@@ -73,7 +71,7 @@ export class RegistroComponent implements OnInit {
   }
 
   onFileSelected(event) {
-    this.img1 = event.target.files[0];
+    this.img = event.target.files[0];
   }
 
   
@@ -93,7 +91,7 @@ export class RegistroComponent implements OnInit {
   
         // this.usuarioService.subirImagenes(this.imagenUno, value.email,1);
         // this.usuarioService.subirImagenes(this.imagenDos,value.email,2);
-        this.usuarioService.crear(this.usuario);
+        this.usuarioService.crear(this.usuario, this.img);
   
         this.router.navigate(['']);
   

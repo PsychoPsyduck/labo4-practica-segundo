@@ -25,9 +25,10 @@ export class AltaMateriaComponent implements OnInit {
   constructor(public materiaService: MateriaService, private formBuilder:FormBuilder) { }
 
   public registerForm: FormGroup = this.formBuilder.group({
-    nombre: new FormControl('', [Validators.minLength(6), Validators.required]),
+    nombre: new FormControl('', [Validators.minLength(2), Validators.required]),
     cuatrimestre: new FormControl('', [Validators.minLength(6), Validators.required]),
     cupos: new FormControl('', [Validators.minLength(6), Validators.required]),
+    anio: new FormControl('', [Validators.min(2020), Validators.required]),
     profesor: new FormControl('', [ Validators.minLength(3), Validators.required]),
   });
 
@@ -41,7 +42,7 @@ export class AltaMateriaComponent implements OnInit {
     console.log("profesor: " + value.profesor);
     let inscripto = new Array;
 
-    this.materia = new Materia(value.nombre, value.cuatrimestre, value.cupos, value.profesor, inscripto, "")
+    this.materia = new Materia(value.nombre, value.cuatrimestre, value.cupos, value.profesor, inscripto, "", value.anio)
 
     this.materiaService.crear(this.materia, this.img)
     .then(res => {

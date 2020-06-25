@@ -1,1 +1,57 @@
-<p>registro-adm works!</p>
+<app-cabecera></app-cabecera>
+
+
+<mat-card>
+  <mat-card-title>Registro Adm</mat-card-title>
+  <div mat-card-avatar class="example-header-image"></div>
+
+  <form [formGroup]="registerForm">
+    <div class="form-group">
+      <mat-form-field class="full-width-input">
+        <mat-label>Mail</mat-label>
+        <input matInput type="text" formControlName="mail">
+      </mat-form-field>
+    </div>
+
+    <!-- <div class="form-group">
+      <mat-form-field class="full-width-input">
+        <mat-label>Tipo</mat-label>
+        <mat-select [(ngModel)]="selectedValue" formControlName="tipo">
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo.value">
+                {{tipo.value}}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> -->
+    
+    <div class="form-group">
+      <mat-form-field class="full-width-input">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="clave">
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="full-width-input">
+        <mat-label>Repita contraseña</mat-label>
+        <input matInput type="password" formControlName="clave2">
+      </mat-form-field>
+    </div>
+
+    <div class="imgFile">
+      <mat-label>Imagen</mat-label>
+      <input type="file" (change)="onFileSelected($event)">
+    </div>
+
+    <div class="form-group">
+      <mat-label class="error">{{errorMessage}}</mat-label>
+      <mat-label class="success">{{successMessage}}</mat-label>
+    </div>
+    
+    <button class="example-button-row" mat-raised-button color="warn" (click)="Volver()">Volver</button>
+    <button class="example-button-row" mat-raised-button color="primary" (click)="tryRegister(registerForm.value)">Entrar</button>
+    
+  </form>
+</mat-card>
+  
+<app-footer></app-footer>

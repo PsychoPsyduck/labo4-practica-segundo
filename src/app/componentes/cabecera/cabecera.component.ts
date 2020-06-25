@@ -33,9 +33,9 @@ export class CabeceraComponent implements OnInit {
       case 'Home':
           this.router.navigate(['/home']);
         break;
-      // case 'registro':
-      //     this.router.navigate(['/registroAdm']);
-      //   break;
+      case 'registroAdm':
+          this.router.navigate(['/registroAdm']);
+        break;
       case 'materia':
           this.router.navigate(['/materia']);
         break;
@@ -50,6 +50,12 @@ export class CabeceraComponent implements OnInit {
         break;
       case 'alumno':
           this.router.navigate(['/alumno']);
+        break;
+      case 'examen':
+          this.router.navigate(['/examen']);
+        break;
+      case 'actas':
+          this.router.navigate(['/actas']);
         break;
       case 'Salir':
           this.loginService.logoutUser();

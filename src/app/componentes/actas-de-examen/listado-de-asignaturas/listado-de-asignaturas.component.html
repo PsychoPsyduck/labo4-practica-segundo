@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-title>Listado de asignaturas</mat-card-title>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Asignaturas</th>
+            <th>Ver</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let materia of materias" >
+            <td>{{materia.nombre}}</td>
+            <td><button (click)="verDetalles(materia)">Enviar</button></td>
+            
+        </tr>
+        
+        </tbody>
+    </table>
+</mat-card>

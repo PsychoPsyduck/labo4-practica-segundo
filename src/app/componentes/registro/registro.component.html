@@ -16,59 +16,25 @@
       <mat-form-field class="full-width-input">
         <mat-label>Contraseña</mat-label>
         <input matInput type="password" formControlName="clave">
-        <mat-label class="error">{{errorMessage}}</mat-label>
-        <mat-label class="success">{{successMessage}}</mat-label>
       </mat-form-field>
     </div>
-    <!-- <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" formControlName="password" required>
-      <label class="error">{{errorMessage}}</label>
-      <label class="success">{{successMessage}}</label>
-    </div> -->
+
+    <div class="form-group">
+      <mat-form-field class="full-width-input">
+        <mat-label>Repita contraseña</mat-label>
+        <input matInput type="password" formControlName="clave2">
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-label class="error">{{errorMessage}}</mat-label>
+      <mat-label class="success">{{successMessage}}</mat-label>
+    </div>
+    
     <button class="example-button-row" mat-raised-button color="warn" (click)="Volver()">Volver</button>
     <button class="example-button-row" mat-raised-button color="primary" (click)="tryRegister(registerForm.value)">Entrar</button>
-    <!-- <button [hidden]="ocultarVerificar"  mat-raised-button color="primary" *ngIf="logeando"  (click)="tryRegister(registerForm.value)">Entrar</button>
-    <button [hidden]="!ocultarVerificar" mat-raised-button color="primary" *ngIf="logeando"  (click)="Entrar()"><i class="fa fa-spinner fa-spin"></i> Ingresando</button> -->
-  
-    <!-- <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button> -->
- </form>
-  <!-- <form action="">
-    <mat-form-field class="full-width-input">
-      <mat-label>Nombre</mat-label>
-      <input matInput type="text" [(ngModel)]="nombre" name="uname">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="full-width-input">
-      <mat-label>Apellido</mat-label>
-      <input matInput type="text" [(ngModel)]="apellido" name="usurname">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="full-width-input">
-      <mat-label>Mail</mat-label>
-      <input matInput type="text" [(ngModel)]="mail" name="umail">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="full-width-input">
-      <mat-label>Contraseña</mat-label>
-      <input matInput type="password" [(ngModel)]="clave" name="psw">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="full-width-input">
-      <mat-label>Repita Contraseña</mat-label>
-      <input matInput type="password" [(ngModel)]="repitaClave" name="rpsw">
-    </mat-form-field>
-    <br>
-    <div class="full-width-input">
-      <mat-label>Imagen 1</mat-label>
-      <input type="file" (change)="onFileSelected($event)">
-    </div>
-    <br>
-    <mat-checkbox class="example-margin" [(ngModel)]="terminosCondiciones" name="chck">Acepto terminos y condiciones.</mat-checkbox>
-    <br>
-    <button class="example-button-row" mat-raised-button color="warn" (click)="Volver()">Volver</button>
-    <button class="example-button-row" mat-raised-button color="primary" (click)="Registrar()">Entrar</button>
-  </form> -->
+    
+  </form>
 </mat-card>
   
 <app-footer></app-footer>

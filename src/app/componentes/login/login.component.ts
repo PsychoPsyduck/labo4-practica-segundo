@@ -8,6 +8,7 @@ import { LoginService } from '../../servicios/login.service';
 
 import { AuthService } from './../../auth/auth.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 // import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 //import {TimerObservable} from "rxjs/observable/TimerObservable";
@@ -41,7 +42,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     public loginService: LoginService, 
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private usuarioService: UsuarioService
     // private usuarioService: UsuarioService
     ) {
       this.Tiempo=5; 
@@ -71,7 +73,10 @@ export class LoginComponent implements OnInit {
       this.errorMessage = "";
       this.successMessage = "Cuenta autorizada";
       this.authService.login().subscribe(resp => {
-        localStorage.setItem("usuarioLogeado", JSON.stringify(value));
+
+        let usuario = this.usuarioService.getUser(value.mail);
+
+        localStorage.setItem("usuarioLogeado", JSON.stringify(usuario));
         this.router.navigate(['home']);
       });
       // this.usuarioService.subirImagenes(this.imagenUno, value.email,1);
@@ -84,36 +89,6 @@ export class LoginComponent implements OnInit {
       this.errorMessage = err.message;
       this.successMessage = "";
     })
-
-    this.repetidor = setInterval(()=>{ 
-      
-      this.Tiempo--;
-      console.log("llego", this.Tiempo);
-      if(this.Tiempo==0 ) {
-        clearInterval(this.repetidor);
-        this.ocultarVerificar=false;
-        console.log(this.ocultarVerificar);
-        this.Tiempo=5;
-      }
-    }, 900);
-  }
-
-  async Entrar() {
-    
-    this.ocultarVerificar=true;
-    // this.loginService.logIn(this.mail, this.clave);
-    this.authService.login().subscribe(resp => {this.router.navigate(['home'])
-      console.log("Esto es resp: " + resp)
-    });
-
-    // var querySnapshot  = await this.loginService.getUsers(this.mail);
-    // this.user = querySnapshot.docs.map(function(x){
-    //   return x.data();
-    // });
-
-    console.log("this.user");
-    console.log(this.user);
-    //guardar en local storashe y usar en donde corresponda el dato del usuario logueado
 
     this.repetidor = setInterval(()=>{ 
       

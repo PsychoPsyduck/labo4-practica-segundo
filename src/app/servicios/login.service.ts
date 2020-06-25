@@ -42,6 +42,8 @@ export class LoginService {
   logoutUser() {
     console.log("Sesion terminada");
     localStorage.removeItem("usuarioLogeado");
+    localStorage.removeItem("materiasUsuario");
+    localStorage.removeItem("materias");
     return firebase.auth().signOut();
   }
 }

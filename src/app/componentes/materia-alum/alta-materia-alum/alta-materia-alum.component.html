@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-title>Inscripcion</mat-card-title>
+    <div mat-card-avatar class="example-header-image"></div>
+  
+    <!-- <form [formGroup]="registerForm"> -->
+      <div class="form-group">
+        <mat-form-field class="full-width-input">
+            <mat-label>Materia</mat-label>
+            <mat-select [(ngModel)]="selectedValue" name="nombre">
+                <mat-option *ngFor="let materia of listaMaterias" [value]="materia.nombre">
+                    {{materia.nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div class="form-group">
+        <mat-label class="error">{{errorMessage}}</mat-label>
+        <mat-label class="success">{{successMessage}}</mat-label>
+      </div>
+      
+      <!-- <button class="example-button-row" mat-raised-button color="warn" (click)="Volver()">Volver</button> -->
+      <button class="example-button-row" mat-raised-button color="primary" (click)="tryRegister(selectedValue)">Entrar</button>
+      
+    <!-- </form> -->
+  </mat-card>

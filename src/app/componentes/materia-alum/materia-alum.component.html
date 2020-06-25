@@ -1,0 +1,15 @@
+<app-cabecera></app-cabecera>
+
+<mat-card>
+    <mat-card-title>Materias</mat-card-title>
+    <div class="row">
+        <div class="col-md-9">
+            <app-listado-materia-alum [materias]="this.materias"></app-listado-materia-alum>
+        </div>
+        <div class="col-md-3">
+            <app-alta-materia-alum (nuevaAlta)="altaNueva($event)"></app-alta-materia-alum>
+        </div>
+    </div>
+</mat-card>
+
+<app-footer></app-footer>

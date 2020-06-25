@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-title>Listado</mat-card-title>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Mail</th>
+            <th>Tipo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let usuario of usuarios" >
+            <td>{{usuario.mail}}</td>
+            <td>{{usuario.tipo}} </td> 
+            
+        </tr>
+        
+        </tbody>
+    </table>
+</mat-card>
+    

@@ -1,0 +1,28 @@
+<app-cabecera></app-cabecera>
+
+<mat-card>
+    <mat-card-title>Usuarios</mat-card-title>
+    <div class="row">
+        <div class="col-md-6">
+
+            <mat-form-field class="full-width-input">
+                <mat-label>Buscar por tipo</mat-label>
+                <mat-select [(ngModel)]="selectedValue" name="profesional">
+                    <mat-option *ngFor="let tipo of tipos" [value]="tipo.value">
+                        {{tipo.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <button type="button" class="btn btn-primary" id="Buscar" (click)="buscarPor()"><i class="fas fa-search"></i> Consultar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <app-listado-usuario [usuarios]="this.usuarios"></app-listado-usuario>
+        </div>
+    </div>
+</mat-card>
+
+<app-footer></app-footer>

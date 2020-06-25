@@ -28,6 +28,17 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { MateriaComponent } from './componentes/materia/materia.component';
+import { ListadoMateriasComponent } from './componentes/materia/listado-materias/listado-materias.component';
+import { AltaMateriaComponent } from './componentes/materia/alta-materia/alta-materia.component';
+import { RegistroAdmComponent } from './componentes/registro-adm/registro-adm.component';
+import { UsuarioComponent } from './componentes/usuario/usuario.component';
+import { ListadoUsuarioComponent } from './componentes/usuario/listado-usuario/listado-usuario.component';
+import { MateriaAlumComponent } from './componentes/materia-alum/materia-alum.component';
+import { AltaMateriaAlumComponent } from './componentes/materia-alum/alta-materia-alum/alta-materia-alum.component';
+import { ListadoMateriaAlumComponent } from './componentes/materia-alum/listado-materia-alum/listado-materia-alum.component';
+import { NotaPipe } from './pipes/nota.pipe';
+import { ColorCupoDirective } from './directiva/color-cupo.directive';
 
 
 @NgModule({
@@ -37,7 +48,18 @@ import { HomeComponent } from './componentes/home/home.component';
     RegistroComponent,
     CabeceraComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    MateriaComponent,
+    ListadoMateriasComponent,
+    AltaMateriaComponent,
+    RegistroAdmComponent,
+    UsuarioComponent,
+    ListadoUsuarioComponent,
+    MateriaAlumComponent,
+    AltaMateriaAlumComponent,
+    ListadoMateriaAlumComponent,
+    NotaPipe,
+    ColorCupoDirective
   ],
   imports: [
     BrowserModule,

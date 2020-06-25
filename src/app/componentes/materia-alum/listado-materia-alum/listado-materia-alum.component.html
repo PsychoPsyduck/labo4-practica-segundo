@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-title>Listado</mat-card-title>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cuatrimestre</th>
+            <th>Profesor</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let materia of materias" >
+            <td>{{materia.nombre}}</td>
+            <td>{{materia.cuatrimestre}} </td>
+            <td>{{materia.profesor}} </td> 
+            
+        </tr>
+        
+        </tbody>
+    </table>
+</mat-card>
+    

@@ -8,6 +8,7 @@ import { LoginService } from '../../servicios/login.service';
 import { UsuarioService } from '../../servicios/usuario.service'
 // import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Usuario } from 'src/app/clases/usuario';
 
 @Component({
   selector: 'app-registro',
@@ -26,7 +27,9 @@ export class RegistroComponent implements OnInit {
   apellido = '';
   mail = '';
   clave= '';
+  clave2= '';
   repitaClave= '';
+  usuario;
   terminosCondiciones: boolean;
   img1 = null;
   img2;
@@ -46,12 +49,7 @@ export class RegistroComponent implements OnInit {
   public registerForm: FormGroup = this.formBuilder.group({
     mail: new FormControl('', [ Validators.email,Validators.required]),
     clave: new FormControl('', [Validators.minLength(6), Validators.required]),
-    // apellido: new FormControl('', [ Validators.minLength(3), Validators.required]),
-  });
-
-  public register2Form: FormGroup = this.formBuilder.group({
-    mail: new FormControl('', [ Validators.email,Validators.required]),
-    clave: new FormControl('', [Validators.minLength(6), Validators.required]),
+    clave2: new FormControl('', [Validators.minLength(6), Validators.required]),
     // apellido: new FormControl('', [ Validators.minLength(3), Validators.required]),
   });
 
@@ -60,10 +58,6 @@ export class RegistroComponent implements OnInit {
 
   Volver() {
     this.router.navigate(['/Login']);
-  }
-
-  Registrar() {
-    
   }
 
   onFileSelected(event) {
@@ -76,22 +70,29 @@ export class RegistroComponent implements OnInit {
     console.log("clave: " + value.clave);
     // console.log("tipo: " + value.tipo);
 
-    this.loginService.doRegister(value)
-    .then(res => {
-      console.log(res);
-      this.errorMessage = "";
-      this.successMessage = "Cuenta autorizada";
+    if(value.clave == value.clave2) {
+      this.usuario = new Usuario(value.mail, value.clave, "Alumno")
 
-      // this.usuarioService.subirImagenes(this.imagenUno, value.email,1);
-      // this.usuarioService.subirImagenes(this.imagenDos,value.email,2);
-      this.usuarioService.crear(value);
-
-      this.router.navigate(['']);
-
-    }, err => {
-      console.log(err);
-      this.errorMessage = err.message;
-      this.successMessage = "";
-    })
+      this.loginService.doRegister(this.usuario)
+      .then(res => {
+        console.log(res);
+        this.errorMessage = "";
+        this.successMessage = "Cuenta autorizada";
+  
+        // this.usuarioService.subirImagenes(this.imagenUno, value.email,1);
+        // this.usuarioService.subirImagenes(this.imagenDos,value.email,2);
+        this.usuarioService.crear(this.usuario);
+  
+        this.router.navigate(['']);
+  
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+        this.successMessage = "";
+      })
+    } else {
+      this.errorMessage = "Las claves no coinciden"
+    }
+    
   }
 }

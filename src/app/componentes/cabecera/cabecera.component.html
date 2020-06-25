@@ -8,9 +8,17 @@
         <img src="/assets/imagenes/logo.png" alt="">
         <span>Registro</span>
       </button>
-      <button mat-button class="logo" (click)="Router('pedir')">
+      <button [hidden]="!esAdmin" mat-button class="logo" (click)="Router('materia')">
         <img src="/assets/imagenes/logo.png" alt="">
-        <span>Pedir Turno</span>
+        <span>Materia</span>
+      </button>
+      <button [hidden]="!esAdmin" mat-button class="logo" (click)="Router('usuario')">
+        <img src="/assets/imagenes/logo.png" alt="">
+        <span>Usuario</span>
+      </button>
+      <button [hidden]="!esAlumno" mat-button class="logo" (click)="Router('materiaAlum')">
+        <img src="/assets/imagenes/logo.png" alt="">
+        <span>Materias</span>
       </button>
       <button mat-button class="logo" (click)="Router('listadoMedico')">
         <img src="/assets/imagenes/logo.png" alt="">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { LoginService } from '../../servicios/login.service';
+import { Usuario } from 'src/app/clases/usuario';
 
 @Component({
   selector: 'app-cabecera',
@@ -9,12 +10,22 @@ import { LoginService } from '../../servicios/login.service';
 })
 export class CabeceraComponent implements OnInit {
 
+  usuario;
+  esAlumno: boolean;
+  esProfesor: boolean;
+  esAdmin: boolean;
+
   constructor(
     private router: Router,
-    public loginService: LoginService
-    ) { }
+    public loginService: LoginService) { 
+      this.esAlumno = false;
+      this.esProfesor = false;
+      this.esAdmin = false;
+    }
 
   ngOnInit() {
+    this.usuarioLogeado();
+    this.es(this.usuario.tipo)
   }
 
   Router(tipo: string) {
@@ -25,8 +36,14 @@ export class CabeceraComponent implements OnInit {
       case 'registro':
           this.router.navigate(['/registroAdm']);
         break;
-      case 'pedir':
-          this.router.navigate(['/pedirTurno']);
+      case 'materia':
+          this.router.navigate(['/materia']);
+        break;
+      case 'materiaAlum':
+          this.router.navigate(['/materiaAlum']);
+        break;
+      case 'usuario':
+          this.router.navigate(['/usuario']);
         break;
       case 'listadoMedico':
           this.router.navigate(['/verTurnos']);
@@ -34,6 +51,29 @@ export class CabeceraComponent implements OnInit {
       case 'Salir':
           this.loginService.logoutUser();
           this.router.navigate(['']);
+        break;
+    }
+  }
+
+  usuarioLogeado() {
+
+    let usuario = JSON.parse(localStorage.getItem("usuarioLogeado"));
+
+    if(usuario != null) {
+      this.usuario = new Usuario(usuario.mail, usuario.clave, usuario.tipo);
+    }
+  }
+
+  es(tipo: string){
+    switch (tipo) {
+      case 'Alumno':
+          this.esAlumno = true;
+        break;
+      case 'Profesor':
+        this.esProfesor = true;
+        break;
+      case 'Admin':
+        this.esAdmin = true;
         break;
     }
   }
